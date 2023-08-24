@@ -19,10 +19,7 @@ def outer_fn(f, x, y, vectorized='none'):
     population response for a single alpha. For the tuning curves we're using the convention
     that we've vectorized over simulus values for a single neuron, which corresponds to 'cols'
 
-    Quickly tested the vectorized setting but should do a bit more. Note that
-    a simple way to test whether vectorization is working is to call with and 
-    without vectorized for a few configurations and make sure they return the same 
-    thing.'''
+    '''
 
     if vectorized == 'none':
         return np.array([[f(ix, iy) for iy in y] for ix in x])
@@ -123,10 +120,6 @@ def sum_gaussian_d(x, mu, sigma, period, d):
         y = 0
     else:
         y = np.zeros(len(x))
-    # new_centers=mu-period*integer_lattice
-    # cov=np.eye(d)*(sigma**2)
-    # x1=np.array([multivariate_normal.pdf(x,new_centers_i,cov) for new_centers_i in new_centers])
-    # return np.sum(x1,axis=0)
     for L in integer_lattice:
         delta = np.linalg.norm((x - mu-period*L), ord=2, axis=1)
         y = y + np.exp(-delta**2/tmp)
