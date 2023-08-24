@@ -76,7 +76,7 @@ for sigma in sigma_list:
         eigen_val_matrix=np.zeros((n_tests_per_param_combo,min(n_neurons,n_data_pts)))
         for curr_sample in range(n_tests_per_param_combo):
             #data is the neural data matrix with the parameter combination.
-            data = plf.gen_data_1d(resp_fn, n_data_pts, n_neurons,period,tc_centers='uniform')
+            data = plf.gen_data_1d(resp_fn, n_data_pts, n_neurons,period,tuning_centers='uniform')
             
             #subtracting the mean from each column
             #data=data-np.mean(data)
