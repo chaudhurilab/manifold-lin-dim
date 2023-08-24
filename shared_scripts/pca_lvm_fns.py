@@ -147,10 +147,10 @@ def circular_gaussian(x, mu, sigma, period):
     tmp = 2 * sigma**2
     normalisation = 1/(np.sqrt(2*np.pi)*sigma)
     if type(mu) == float and type(x) == float:
-        if x-mu <= period/2:
+        if abs(x-mu) <= period/2:
             y = normalisation*np.exp(-(x-mu)**2/tmp)
-        elif x-mu > period/2:
-            y = normalisation*np.exp(-(x-mu-period)**2/tmp)
+        elif abs(x-mu) > period/2:
+            y = normalisation*np.exp(-(abs(x-mu)-period)**2/tmp)
     elif type(mu) == float or type(mu) == np.float64 or type(mu) == int and type(x) == np.ndarray:
         y = np.zeros(len(x))
         if mu <= period/2:
