@@ -180,7 +180,11 @@ def circular_gaussian(x, mu, sigma, period):
 
 
 def circular_gaussian_multid(x, mu, sigma, period):
-    '''d dimensional generalization of the above circular Gaussian tuning curve '''
+    '''Parameters:
+        x: N times d matrix where N is the number of data pts
+        mu:len d vector
+      Returns: Vector of length N whose each element is a
+       d dimensional generalization of the above circular Gaussian tuning curve '''
     d = len(mu)
     data_columns = np.array([circular_gaussian(x[:, i], mu[i], sigma, period) for i in
                             range(d)])
